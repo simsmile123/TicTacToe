@@ -6,6 +6,7 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  
 }
 
 h1 {
@@ -40,9 +41,10 @@ h6 {
 }
 
 .game-board {
-  display: block;
-  justify-content: center;
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
@@ -59,7 +61,7 @@ ul {
 }
 
 body {
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Times New Roman', serif;
   margin: 20px;
   padding: 0;
   background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red */
@@ -72,12 +74,12 @@ body {
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 100px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 100px;
 }
 
 .board-row:after {
@@ -96,4 +98,29 @@ body {
 
 .game-info {
   margin-left: 20px;
+}
+
+.silly-gif {
+  position: absolute;
+  right: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.silly-gif:hover {
+  transform: scale(1.1);
+}
+
+.winner {
+  background-color: pink;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 100px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 100px;
 }
