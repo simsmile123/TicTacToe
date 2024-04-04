@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './styles.css'; // Import your CSS file
 
 function Square({ value, onSquareClick }) {
   return (
@@ -22,17 +23,8 @@ function Board({ xIsNext, squares, onPlay }) {
     onPlay(nextSquares);
   }
 
-  const winner = calculateWinner(squares);
-  let status;
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
-  }
-
   return (
     <>
-      <div className="status">{status}</div>
       <div className="board-row">
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -55,6 +47,7 @@ function Board({ xIsNext, squares, onPlay }) {
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [winner, setWinner] = useState(null); // State variable to track winner
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
@@ -62,6 +55,10 @@ export default function Game() {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
+    const newWinner = calculateWinner(nextSquares);
+    if (newWinner) {
+      setWinner(newWinner);
+    }
   }
 
   function jumpTo(nextMove) {
@@ -90,6 +87,9 @@ export default function Game() {
       <div className="game-info">
         <ol>{moves}</ol>
       </div>
+      {winner && (
+        <img src="https://media.giphy.com/media/uRAhwxlVBP6ied6EgB/giphy.gif" alt="Winner GIF" />
+      )}
     </div>
   );
 }

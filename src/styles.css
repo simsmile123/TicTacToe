@@ -19,6 +19,7 @@ h2 {
 }
 
 h3 {
+  font-family:Arial, Helvetica, sans-serif;
   margin-top: 0;
   font-size: 18px;
 }
@@ -38,6 +39,13 @@ h6 {
   font-size: 12px;
 }
 
+.game-board {
+  display: block;
+  justify-content: center;
+  width: 100%;
+}
+
+
 code {
   font-size: 1.2em;
 }
@@ -51,9 +59,10 @@ ul {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin: 20px;
   padding: 0;
+  background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red */
 }
 
 .square {
